@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package PhluxorExample.Command;
+
+option php_metadata_namespace = "PhluxorExample\\Metadata";
+
+message StartsClass {
+    string subject = 1;
+}
+
+message PrepareTest {
+    string subject = 1;
+}
+
+message StartTest {
+    string subject = 1;
+}
+
+message SubmitTest {
+    string subject = 1;
+    string name = 2;
+}
+
+message FinishTest {
+    string subject = 1;
+}
+

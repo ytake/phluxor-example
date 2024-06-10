@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package PhluxorExample.Event;
+
+option php_metadata_namespace = "PhluxorExample\\Metadata";
+
+message ClassFinished {
+  string subject = 1;
+}
