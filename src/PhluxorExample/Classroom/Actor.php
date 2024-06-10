@@ -14,7 +14,6 @@ use PhluxorExample\Command\StartsClass;
 use PhluxorExample\Event\ClassFinished;
 use PhluxorExample\Teacher\Actor as TeacherActor;
 
-
 readonly class Actor implements ActorInterface
 {
     /**
