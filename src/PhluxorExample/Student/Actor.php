@@ -32,7 +32,6 @@ class Actor implements ActorInterface
                 'name' => $context->self()?->protobufPid()->getId(),
             ]));
             $context->poison($context->self());
-            $context->logger()->close();
         }
     }
 }
