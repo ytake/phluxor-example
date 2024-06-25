@@ -10,6 +10,6 @@ The purpose is to learn and understand the actor model through PHP.
 
 PHPを通じたアクターモデルの学習、理解を目的としています。
 
-[classroom](classroom) classroomは、先生と生徒がいる教室のシンプルな例です。
+[classroom](classroom) classroomは、先生と生徒がいる教室のシンプルな例です。  
 [fizzbuzz](fizzbuzz) fizzbuzzは、アクターモデルを使用したFizzBuzzのシンプルな例です。  
 
