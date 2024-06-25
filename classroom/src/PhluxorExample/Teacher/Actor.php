@@ -7,7 +7,7 @@ namespace PhluxorExample\Teacher;
 use Phluxor\ActorSystem\Context\ContextInterface;
 use Phluxor\ActorSystem\Message\ActorInterface;
 use Phluxor\ActorSystem\Message\Restarting;
-use Phluxor\ActorSystem\Pid;
+use Phluxor\ActorSystem\Ref;
 use Phluxor\ActorSystem\Props;
 use PhluxorExample\Command\FinishTest;
 use PhluxorExample\Command\PrepareTest;
@@ -22,11 +22,11 @@ class Actor implements ActorInterface
 
     /**
      * @param int[] $students
-     * @param Pid $replyTo
+     * @param Ref $replyTo
      */
     public function __construct(
         private readonly array $students,
-        private readonly Pid $replyTo
+        private readonly Ref $replyTo
     ) {
     }
 
@@ -48,7 +48,7 @@ class Actor implements ActorInterface
                         // $context->logger()->error(sprintf('生徒 %d 生成できませんでした', $student));
                         throw new \RuntimeException('生徒生成失敗');
                     }
-                    $context->send($ref->getPid(), new StartTest(['subject' => $msg->getSubject()]));
+                    $context->send($ref->getRef(), new StartTest(['subject' => $msg->getSubject()]));
                 }
                 $this->endOfTests[] = $context->self();
                 break;

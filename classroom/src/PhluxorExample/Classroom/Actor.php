@@ -6,7 +6,7 @@ namespace PhluxorExample\Classroom;
 
 use Phluxor\ActorSystem\Context\ContextInterface;
 use Phluxor\ActorSystem\Message\ActorInterface;
-use Phluxor\ActorSystem\Pid;
+use Phluxor\ActorSystem\Ref;
 use Phluxor\ActorSystem\Props;
 use PhluxorExample\Command\FinishTest;
 use PhluxorExample\Command\PrepareTest;
@@ -17,11 +17,11 @@ use PhluxorExample\Teacher\Actor as TeacherActor;
 readonly class Actor implements ActorInterface
 {
     /**
-     * @param Pid $stream
+     * @param Ref $stream
      * @param int[] $students
      */
     public function __construct(
-        private Pid $stream,
+        private Ref $stream,
         private array $students
     ) {
     }

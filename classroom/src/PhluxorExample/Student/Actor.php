@@ -23,13 +23,13 @@ class Actor implements ActorInterface
             $context->logger()->info(
                 sprintf(
                     '%s が %s テストの解答を提出します',
-                    $context->self()?->protobufPid()->getId(),
+                    $context->self(),
                     $msg->getSubject()
                 )
             );
             $context->send($context->parent(), new SubmitTest([
                 'subject' => $msg->getSubject(),
-                'name' => $context->self()?->protobufPid()->getId(),
+                'name' => $context->self(),
             ]));
             $context->poison($context->self());
         }

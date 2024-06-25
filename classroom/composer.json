@@ -12,7 +12,7 @@
   "require": {
     "php": "^8.3",
     "ext-swoole": "^5.0",
-    "phluxor/phluxor": "dev-main"
+    "phluxor/phluxor": "^0.1.1"
   },
   "autoload": {
     "psr-4": {
