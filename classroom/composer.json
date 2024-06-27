@@ -12,11 +12,16 @@
   "require": {
     "php": "^8.3",
     "ext-swoole": "^5.0",
-    "phluxor/phluxor": "^0.1.1"
+    "phluxor/phluxor": "^0.1.2"
   },
   "autoload": {
     "psr-4": {
       "PhluxorExample\\": "src/PhluxorExample"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
     }
   }
 }
