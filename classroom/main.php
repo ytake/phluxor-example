@@ -39,7 +39,7 @@ function main(): void
                 ),
                 'math-classroom'
             );
-            $system->root()->send($stream->getPid(), new StartsClass(['subject' => 'math']));
+            $system->root()->send($stream->getRef(), new StartsClass(['subject' => 'math']));
         });
     });
 }
