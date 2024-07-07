@@ -29,7 +29,7 @@ class Actor implements ActorInterface
             );
             $context->send($context->parent(), new SubmitTest([
                 'subject' => $msg->getSubject(),
-                'name' => $context->self(),
+                'name' => (string) $context->self(),
             ]));
             $context->poison($context->self());
         }
