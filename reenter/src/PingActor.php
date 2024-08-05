@@ -22,13 +22,10 @@ readonly class PingActor implements ActorInterface
     public function receive(ContextInterface $context): void
     {
         $message = $context->message();
-        switch (true) {
-            case $message instanceof Message\Tick:
-                $ping = new Ping($message->count);
-                $future = $context->requestFuture($this->routerRef, $ping, 2500);
-                $count = $message->count;
-                $context->reenterAfter($future, new PongTask($context->logger()));
-                break;
+        if ($message instanceof Message\Tick) {
+            $ping = new Ping($message->count);
+            $future = $context->requestFuture($this->routerRef, $ping, 2);
+            $context->reenterAfter($future, new PongTask($context->logger(), $message->count));
         }
     }
 }

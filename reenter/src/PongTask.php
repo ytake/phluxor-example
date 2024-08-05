@@ -11,14 +11,15 @@ use Throwable;
 readonly class PongTask implements ReenterAfterInterface
 {
     public function __construct(
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
+        private int $count
     ) {
     }
 
     public function __invoke(mixed $res, ?Throwable $error): void
     {
         if ($error !== null) {
-            $this->logger->error("Failed to handle", ['message' => $res]);
+            $this->logger->error(sprintf("Failed to handle: %d", $this->count), ['message' => $res]);
             return;
         }
 

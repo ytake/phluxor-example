@@ -28,26 +28,24 @@ function main(): void
                     new ActorSystem\Message\ReceiveFunction(
                         function (ActorSystem\Context\ContextInterface $context): void {
                             $message = $context->message();
-                            switch (true) {
-                                case $message instanceof Ping:
-                                    $remainder = $message->count % 3;
-                                    if ($remainder === 0) {
-                                        $sleep = 1700;
-                                    } elseif ($remainder === 1) {
-                                        $sleep = 300;
-                                    } else {
-                                        $sleep = 2900;
-                                    }
-                                    Coroutine::sleep($sleep / 1000);
-                                    $context->respond(new Pong($message->count));
-                                    break;
+                            if ($message instanceof Ping) {
+                                $remainder = $message->count % 3;
+                                if ($remainder === 0) {
+                                    $sleep = 1700;
+                                } elseif ($remainder === 1) {
+                                    $sleep = 300;
+                                } else {
+                                    $sleep = 2900;
+                                }
+                                Coroutine::sleep($sleep / 1000);
+                                $context->logger()->info("received ping", ['ref' => (string) $context->self()]);
+                                $context->respond(new Pong($message->count));
                             }
                         }
                     )
                 )
             );
             $pongRouter = $system->root()->spawn($props);
-            \Swoole\Coroutine::sleep(0.1);
             $ping = $system->root()->spawn(
                 Props::fromProducer(fn() => new PingActor($pongRouter))
             );
