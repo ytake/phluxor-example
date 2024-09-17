@@ -1,0 +1,27 @@
+{
+  "name": "vendor_name/phluxor-example",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "ytake",
+      "email": "yuuki.takezawa@comnect.jp.net"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "ext-swoole": "^5.0",
+    "phluxor/phluxor": "^0.1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhluxorExample\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
