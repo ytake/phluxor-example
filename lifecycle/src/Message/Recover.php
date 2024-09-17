@@ -6,5 +6,4 @@ namespace PhluxorExample\Message;
 
 class Recover
 {
-
 }

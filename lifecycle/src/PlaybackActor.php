@@ -6,7 +6,6 @@ namespace PhluxorExample;
 
 use Phluxor\ActorSystem\Context\ContextInterface;
 use Phluxor\ActorSystem\Message\ActorInterface;
-use Phluxor\ActorSystem\Message\Restarting;
 use Phluxor\ActorSystem\Message\Started;
 use Phluxor\ActorSystem\Message\Stopping;
 use Phluxor\ActorSystem\Props;
@@ -21,9 +20,6 @@ class PlaybackActor implements ActorInterface
         switch (true) {
             case $message instanceof Started:
                 $context->logger()->info("PlaybackActor started");
-                break;
-            case $message instanceof Restarting:
-                $context->logger()->info("ChildActor restarting");
                 break;
             case $message instanceof Recover:
                 $this->recoverMessageHandler($context);
@@ -45,5 +41,6 @@ class PlaybackActor implements ActorInterface
             $child = $context->children()[0];
         }
         $context->forward($child);
+        \Swoole\Coroutine::sleep(0.1);
     }
 }
