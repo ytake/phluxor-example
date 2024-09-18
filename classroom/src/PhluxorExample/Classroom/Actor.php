@@ -45,6 +45,7 @@ readonly class Actor implements ActorInterface
                     'subject' => $msg->getSubject(),
                 ]));
                 $context->poison($context->self());
+                \Swoole\Coroutine::sleep(0.1);
                 break;
         }
     }
